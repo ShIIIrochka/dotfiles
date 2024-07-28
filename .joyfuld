@@ -1,0 +1,24 @@
+#!/usr/bin/env sh
+
+CONFIG_FILE="$HOME/.config/i3/config"
+WALLPAPER_DIR="/home/$USER/wallpapers"
+CHK_WALLPAPER_DIR="$HOME/wallpapers/edited/"
+SCRIPTS_DIR="~/.scripts"
+RAW="plant.png"
+THEME_DIR="/home/$USER/.themes"
+#current_theme="everforest-gtk"
+THEME="default"
+MODE="default"
+
+BG0="#252B30"
+BG1="#2D353B"
+BG2="#4B565C"
+FG0="#D4C7AB"
+
+RED="#E67E80"
+ORANGE="#E69875"
+YELLOW="#DBBC7F"
+GREEN="#A7C080"
+BLUE="#7FBBB3"
+AQUA="#83C092"
+PURPLE="#D699B6"
