@@ -6,6 +6,7 @@
 set $mod Mod4
 set $WALLPAPER /home/$USER/wallpapers/plant.jpg
 set $rofi /home/$USER/.config/rofi/launchers/type-1/launcher.sh
+set $system-menu ~/.config/rofi/sysmenu/sysmenu.sh
 
 set $BG0 #252B30
 set $BG1 #4B565C
@@ -27,9 +28,9 @@ font pango: FiraCode Nerd Font medium 14
 exec --no-startup-id dex --autostart --environment i3
 
 # change gap size
-gaps outer 5
-gaps inner 30
-gaps top 63
+gaps outer 3
+gaps inner 20
+gaps top 45
 
 # Automatically putting clients on specific workspaces 
 assign  [class="Vivaldi"] 2
@@ -37,18 +38,11 @@ assign [class="discord"] 3
 assign [class="TelegramDesktop"] 3
 
 for_window [class="^.*"] border pixel 0
-for_window [class="popcorntime"] floating enable
+for_window [class="Popcorn-Time"] floating enable
 
 # Change language
 exec_always --no-startup-id "setxkbmap -layout us,ru && setxkbmap -option 'grp:caps_toggle'"
 
-# class                 border  backgr. text    indicator child_border
-#client.focused		$GREEN0	$GREEN0	$GREEN0	$GREEN0	$GREEN0	
-#client.focused_inactive	$BG1	$BG1	$BG1	$BG1	$BG1
-
-# xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
-# screen before suspend. Use loginctl lock-session to lock your screen.
-#exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
@@ -71,24 +65,23 @@ bindsym $mod+Return exec urxvt
 exec --no-startup-id thunar --daemon
 
 # Desktop nofications
-exec --no-startup-id /usr/bin/dunst
+exec_always --no-startup-id "killall dunst; dunst -conf ~/.config/dunst/dunstrc"
 
 # clipboard
 exec --no-startup-id parcellite
 
 # start window compositor
-#exec --no-startup-id picom -b --config /home/ksenia/.config/picom/picom.conf
-exec --no-startup-id picom -b 
+exec_always --no-startup-id "killall picom; picom -b" 
 
 # URxvt settings from Xresorces
-exec --no-startup-id xrdb /home/$USER/.Xresources
+exec_always --no-startup-id xrdb -merge ~/.Xresources
 
 # kill focused window
 bindsym $mod+q kill
 
 # start rofi (a program launcher)
 bindsym $mod+r exec --no-startup-id $rofi
-
+bindsym $mod+Escape exec --no-startup-id $system-menu
 # change focus
 bindsym $mod+j focus left
 bindsym $mod+k focus down
@@ -215,9 +208,9 @@ default_floating_border none
 # background
 #exec_always --no-startup-id nitrogen --restore &
 # start the status bar
-exec --no-startup-id /home/ksenia/.config/polybar/launch.sh
+exec_always --no-startup-id "killall polyvar; /home/ksenia/.config/polybar/launch.sh"
 
-exec --no-startup-id xrandr --dpi 110
+#exec --no-startup-id xrandr --dpi 110
 # ----------------------------------------------------------------------------------------------------------------
 # Add this to your i3 config to take a screenshot (selection) and save it to the clipboard just by pressing PrtSc!
 # The resulting file will have this format: screenshot_02-Dec-2021_13-24-21.png
@@ -236,6 +229,6 @@ bindsym $mod+p exec --no-startup-id /home/ksenia/.scripts/screenshot.sh full
 bindsym $mod+Shift+p exec --no-startup-id /home/ksenia/.scripts/screenshot.sh area
 
 bindsym $mod+Ctrl+p exec --no-startup-id /home/ksenia/.scripts/screenshot.sh window
-exec --no-startup-id i3-auto-tiling 
-exec --no-startup-id feh --bg-scale /home/ksenia/wallpapers/edited/plant_HD.jpg
+exec_always --no-startup-id i3-auto-tiling 
+exec --no-startup-id feh --bg-scale /home/ksenia/wallpapers/edited/pond_shed_4K.jpg
 bindsym Mod4+Shift+x exec betterlockscreen -l blur
