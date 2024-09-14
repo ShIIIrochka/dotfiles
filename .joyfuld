@@ -1,14 +1,63 @@
 #!/usr/bin/env sh
 
-CONFIG_FILE="$HOME/.config/i3/config"
-WALLPAPER_DIR="/home/$USER/wallpapers"
-CHK_WALLPAPER_DIR="$HOME/wallpapers/edited/"
+CONFIG_FILE="${HOME}/.config/i3/config"
+WALLPAPER_DIR="/${HOME}/wallpapers"
+CHK_WALLPAPER_DIR="${HOME}/wallpapers/edited/"
 SCRIPTS_DIR="~/.scripts"
 RAW="plant.png"
-THEME_DIR="/home/$USER/.themes"
+THEME_DIR="${HOME}/.themes"
 #current_theme="everforest-gtk"
 THEME="default"
 MODE="default"
+
+CONFIG_DIR="${HOME}/.config"
+ICONS_DIR="${HOME}/.icons"
+SCRIPTS_DIR="${HOME}/.scripts"
+THEMES_DIR="${HOME}/.themes"
+TMP_DIR="/tmp"
+MPD_DIR="${CONFIG_DIR}/mpd"
+MPD_SCRIPTS_DIR="${MPD_DIR}/scripts"
+MPD_CONFIG="${MPD_DIR}/mpd.conf"
+CHK_MPD_PORT="$(siq 'port' "$MPD_CONFIG")"
+
+BRIGHTNESS_DEVICE=''
+BRIGHTNESS_STEPS='5'
+
+#-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~--~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-#
+# Screenshot options                                                 ~ Auto-load ~ #
+#-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~--~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-#
+# SS_SAVE               || Save screenshots? If not then it's copied to clipboard. #
+# SS_SVDIR              || Directory to save screenshots, "$SS_SVDIR/Screenshots". #
+# SS_CP2CLP             || Copy to clipboard? Automatically 'yes' if SS_SAVE='no'. #
+# SS_POINTER            || Capture cursor (known as "pointer") in the screenshots? #
+# SS_QUALITY            || 0-100, high value means high size with low compression. #
+#                       ||---------------------------------------------------------#
+# SS_USE_FRAME          || Use frame in the selection (or draw) mode? (MacOS-like) #
+# SS_FRAME_COLOR        || Hexa, RGBA supports. Fill 'auto' to use dominant color. #
+# SS_FRAME_PADDING      || Any number value, frame-padding in pixel for all sides. #
+# SS_FRAME_S_OPACITY    || 0-100, shadows opacity, high value means thick shadows. #
+#                       ||---------------------------------------------------------#
+# SS_COUNTDOWN_SECONDS  || Any number value, how long (seconds) to capture screen. #
+#-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~--~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-#
+
+SS_SAVE='yes'                                    # Universal or all modes
+SS_SVDIR="${HOME}/Pictures"                      # Universal or all modes
+SS_CP2CLP='yes'                                  # Universal or all modes
+SS_POINTER='no'                                  # Universal or all modes
+SS_QUALITY='100'                                 # Universal or all modes
+
+SS_USE_FRAME='no'                               # Selection or draw mode
+SS_FRAME_COLOR='auto' #434c5e better for Mech BG # Selection or draw mode w frame
+SS_FRAME_PADDING='15'                            # Selection or draw mode w frame
+SS_FRAME_S_OPACITY='25'                          # Selection or draw mode w frame
+SS_COUNTDOWN_SECONDS='5'                         # Countdown timer or delay mode
+
+alias joyd_mpd_notifier='${MPD_SCRIPTS_DIR}/mpd-notifier.sh'
+alias joyd_mpd_notify_albumart='${MPD_SCRIPTS_DIR}/notify.album-art.sh'
+alias joyd_music_controller='${SCRIPTS_DIR}/music-controller.sh'
+alias joyd_screenshot_countdown='${SCRIPTS_DIR}/screenshot-countdown.sh'
+alias joyd_screenshot_screen='${SCRIPTS_DIR}/screenshot-screen.sh'
+alias joyd_screenshot_selection='${SCRIPTS_DIR}/screenshot-selection.sh'
 
 BG0="#252B30"
 BG1="#2D353B"
