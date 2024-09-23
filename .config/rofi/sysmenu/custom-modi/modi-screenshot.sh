@@ -23,11 +23,13 @@ C_='' C="<span font_desc='${ROW_ICON_FONT}' weight='bold'>${C_}</span>   Coun
 
 case "${@}" in
     "$A") joyd_screenshot_screen
+          return ${?}
     ;;
     "$B") joyd_screenshot_selection
           return ${?}
     ;;
     "$C") joyd_screenshot_countdown
+          return ${?}
     ;;
 esac
 
