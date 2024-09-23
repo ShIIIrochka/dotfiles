@@ -31,10 +31,8 @@ case "${1}" in
 
         apply_wallpaper "${CHK_WALLPAPER_DIR}${WALLPAPER}"
 
-        dunstify '' "<span size='small'><u>${WALLPAPER}</u></span>\nSuccessfully applied!" \
+        dunstify "<span size='small'><u>${WALLPAPER}</u></span>\nSuccessfully applied!" \
                  -h string:synchronous:wallpaper-set \
-                 -a joyful_desktop \
-                 -i "$WALLPAPER_ICON" \
                  -u low
     exit 0
     ;;
@@ -50,7 +48,6 @@ case "${1}" in
 
                 dunstify '' "Generating X wallpaper ..\n<span size='small'><u>${RAW}</u></span>" \
                          -h string:synchronous:wallpaper-set \
-                         -a joyful_desktop \
                          -t 1000
 
                 if [ "$GET_WP_SIZE" -lt 1920 ]; then
@@ -126,7 +123,6 @@ case "${1}" in
 
                 dunstify '' "Nothing to generate!\n<span size='small'>Puts in <u>~/${WALLPAPER_DIR##*/}</u></span>" \
                          -h string:synchronous:wallpaper-set \
-                         -a joyful_desktop \
                          -u low
 
             fi
