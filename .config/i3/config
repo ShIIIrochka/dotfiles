@@ -28,9 +28,9 @@ font pango: FiraCode Nerd Font medium 14
 exec --no-startup-id dex --autostart --environment i3
 
 # change gap size
-gaps outer 3
-gaps inner 20
-gaps top 45
+gaps outer 0
+gaps inner 15
+gaps top 43
 
 # Automatically putting clients on specific workspaces 
 assign  [class="Vivaldi"] 2
@@ -208,7 +208,7 @@ default_floating_border none
 # background
 #exec_always --no-startup-id nitrogen --restore &
 # start the status bar
-exec_always --no-startup-id "killall polyvar; /home/ksenia/.config/polybar/launch.sh"
+exec_always --no-startup-id "killall polybar; /home/ksenia/.config/polybar/launch.sh"
 
 #exec --no-startup-id xrandr --dpi 110
 # ----------------------------------------------------------------------------------------------------------------
@@ -224,11 +224,13 @@ exec_always --no-startup-id "killall polyvar; /home/ksenia/.config/polybar/launc
 # key: PrtSc
 #bindsym $mod+Shift+o exec NOW=$(date +%d-%b-%Y_%H-%M-%S) && maim --format png --select > ~/screenshots/screenshot_$NOW.png && xclip -selection clip -t image/png ~/screenshots/screenshot_$NOW.png
 
-bindsym $mod+p exec --no-startup-id /home/ksenia/.scripts/screenshot.sh full
+#bindsym $mod+p exec --no-startup-id /home/ksenia/.scripts/screenshot.sh full
+#bindsym $mod+Shift+p exec --no-startup-id /home/ksenia/.scripts/screenshot.sh area
+#bindsym $mod+Ctrl+p exec --no-startup-id /home/ksenia/.scripts/screenshot.sh window
+bindsym Print exec --no-startup-id ~/.scripts/screenshot-screen.sh
+bindsym $mod+p exec --no-startup-id ~/.scripts/screenshot-selection.sh
+bindsym $mod+Shift+P exec --no-startup-id ~/.scripts/screenshot-countdown.sh
 
-bindsym $mod+Shift+p exec --no-startup-id /home/ksenia/.scripts/screenshot.sh area
-
-bindsym $mod+Ctrl+p exec --no-startup-id /home/ksenia/.scripts/screenshot.sh window
 exec_always --no-startup-id i3-auto-tiling 
-exec --no-startup-id feh --bg-scale /home/ksenia/wallpapers/edited/pond_shed_4K.jpg
+exec --no-startup-id feh --bg-scale /home/ksenia/wallpapers/edited/berries_2K.jpg
 bindsym Mod4+Shift+x exec betterlockscreen -l blur
