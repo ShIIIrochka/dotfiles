@@ -9,9 +9,9 @@ get_spotify_status() {
 if pgrep -x "spotify" > /dev/null; then
    	status=$(get_spotify_status)
    	if [[ "$status" == "Playing" ]]; then
-       		echo " "     
+       		echo " "     
 	elif [[ "$status" == "Paused" ]]; then
-       		echo " " 
+       		echo " "  
    	else
        		echo ""     
 	fi
