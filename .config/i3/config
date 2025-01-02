@@ -208,7 +208,7 @@ default_floating_border none
 # background
 #exec_always --no-startup-id nitrogen --restore &
 # start the status bar
-exec_always --no-startup-id "killall polybar; /home/ksenia/.config/polybar/launch.sh"
+exec_always --no-startup-id "killall polyvar; /home/ksenia/.config/polybar/launch.sh"
 
 #exec --no-startup-id xrandr --dpi 110
 # ----------------------------------------------------------------------------------------------------------------
